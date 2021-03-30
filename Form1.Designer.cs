@@ -47,6 +47,8 @@
             this.RAMGpu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpticalDrive = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bImportToXML = new System.Windows.Forms.Button();
+            this.bExportToXML = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.infoProductTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +64,7 @@
             // 
             // bExportToTxt
             // 
-            this.bExportToTxt.Location = new System.Drawing.Point(228, 25);
+            this.bExportToTxt.Location = new System.Drawing.Point(308, 25);
             this.bExportToTxt.Name = "bExportToTxt";
             this.bExportToTxt.Size = new System.Drawing.Size(118, 32);
             this.bExportToTxt.TabIndex = 1;
@@ -176,11 +178,32 @@
             this.OpticalDrive.HeaderText = "Optival Drive";
             this.OpticalDrive.Name = "OpticalDrive";
             // 
+            // bImportToXML
+            // 
+            this.bImportToXML.Location = new System.Drawing.Point(168, 25);
+            this.bImportToXML.Name = "bImportToXML";
+            this.bImportToXML.Size = new System.Drawing.Size(106, 32);
+            this.bImportToXML.TabIndex = 4;
+            this.bImportToXML.Text = "Import From XML";
+            this.bImportToXML.UseVisualStyleBackColor = true;
+            // 
+            // bExportToXML
+            // 
+            this.bExportToXML.Location = new System.Drawing.Point(455, 25);
+            this.bExportToXML.Name = "bExportToXML";
+            this.bExportToXML.Size = new System.Drawing.Size(118, 32);
+            this.bExportToXML.TabIndex = 5;
+            this.bExportToXML.Text = "Export To XML";
+            this.bExportToXML.UseVisualStyleBackColor = true;
+            this.bExportToXML.Click += new System.EventHandler(this.bExportToXML_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1549, 494);
+            this.Controls.Add(this.bExportToXML);
+            this.Controls.Add(this.bImportToXML);
             this.Controls.Add(this.infoProductTable);
             this.Controls.Add(this.bExportToTxt);
             this.Controls.Add(this.bImportFromTxt);
@@ -212,6 +235,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RAMGpu;
         private System.Windows.Forms.DataGridViewTextBoxColumn OS;
         private System.Windows.Forms.DataGridViewTextBoxColumn OpticalDrive;
+        private System.Windows.Forms.Button bImportToXML;
+        private System.Windows.Forms.Button bExportToXML;
     }
 }
 

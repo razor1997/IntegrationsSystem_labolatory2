@@ -15,7 +15,6 @@ namespace IntegrationsSystem_labolatory2
 {
     public partial class Form1 : Form
     {
-        bool wrongDate;
         static List<String[]> dane = new List<string[]>();
         static Dictionary<String, Int32> prodSpec = new Dictionary<string, int>();
         public Form1()
@@ -143,6 +142,32 @@ namespace IntegrationsSystem_labolatory2
                     infoProductTable.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.White;
                 }
             }
+        }
+
+        private void bExportToXML_Click(object sender, EventArgs e)
+        {
+            int IdProduct = 0;
+            List<Product> products = new List<Product>();
+            for (int i = 0; i < infoProductTable.Rows.Count - 1; i++)
+            {
+                Product product = new Product();
+
+                Screen screenProduct = new Screen();
+
+                product.Id = IdProduct++;
+                product.Manufacturer = infoProductTable.Rows[i].Cells[0].Value.ToString();
+                screenProduct.Size = infoProductTable.Rows[i].Cells[1].Value.ToString();
+                screenProduct.Resolution = infoProductTable.Rows[i].Cells[2].Value.ToString();
+                screenProduct.Type = infoProductTable.Rows[i].Cells[3].Value.ToString();
+                screenProduct.ScreenTouch = infoProductTable.Rows[i].Cells[4].Value.ToString();
+
+                product.screen = screenProduct;
+                products.Add(product);
+
+                products.Add(product);
+            }
+
+            CreatingXMLFile();
         }
     }
 }
