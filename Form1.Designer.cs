@@ -62,7 +62,7 @@
             // 
             // bExportToTxt
             // 
-            this.bExportToTxt.Location = new System.Drawing.Point(172, 25);
+            this.bExportToTxt.Location = new System.Drawing.Point(228, 25);
             this.bExportToTxt.Name = "bExportToTxt";
             this.bExportToTxt.Size = new System.Drawing.Size(118, 32);
             this.bExportToTxt.TabIndex = 1;
