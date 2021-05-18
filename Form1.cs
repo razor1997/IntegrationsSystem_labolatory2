@@ -206,5 +206,25 @@ namespace IntegrationsSystem_labolatory2
         {
             Helper.GetDataFromDatabase(infoProductTable);
         }
+
+        private void bCountProducentItems_Click(object sender, EventArgs e)
+        {
+            iQuantityItems.Text = Helper.ShowCountProducentItems(cBProducentName.SelectedItem.ToString()).ToString();
+        }
+
+        private void bShowItemsWithMatrix_Click(object sender, EventArgs e)
+        {
+            Helper.ShowItemsMatrix(infoProductTable, cBMatrixType.SelectedItem.ToString());          
+        }
+
+        private void bFiltrByScreenResolution_Click(object sender, EventArgs e)
+        {
+            iQuantityItemsMatrix.Text = Helper.ScreenResolutionCount(cBScreenResolutionType.SelectedItem.ToString()).ToString();
+        }
+
+        private void cBMatrixType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

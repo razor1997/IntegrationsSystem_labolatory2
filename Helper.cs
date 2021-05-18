@@ -93,7 +93,6 @@ namespace IntegrationsSystem_labolatory2
                 Console.WriteLine("Connecting to MySQL...");
                 conn.Open();
 
-                string sql = "";
                 MySqlCommand comm = new MySqlCommand();
                 comm.Connection = conn;
                 comm.CommandText = "select * from integrationsystems";
@@ -104,8 +103,6 @@ namespace IntegrationsSystem_labolatory2
 
                 if (rdr.HasRows)
                 {
-
-
                     while (rdr.Read())
                     {
 
@@ -134,14 +131,98 @@ namespace IntegrationsSystem_labolatory2
                 Console.Error.WriteLine(mysql.Message);
             }
 
-            /*    catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }*/
-
-
             Console.WriteLine("Done.");
 
         }
+        public static int ShowCountProducentItems(string producentName)
+        {
+            string connStr = "server=localhost;user=root;database=integrationsystems;port=3306;password=;Allow User Variables=true";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            int count = 0;
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                conn.Open();
+
+                MySqlCommand comm = new MySqlCommand();
+                comm.Connection = conn;
+                comm.CommandText = "select count(*) from integrationsystems where manufacture = '" + producentName + "'";
+
+                count = int.Parse(comm.ExecuteScalar().ToString());
+                conn.Close();
+            }
+            catch (MySqlException mysql)
+            {
+                Console.Error.WriteLine(mysql.Message);
+            }
+
+            return count;
+        }
+
+        public static void ShowItemsMatrix(DataGridView dataView, string matrixType)
+        {
+            string connStr = "server=localhost;user=root;database=integrationsystems;port=3306;password=;Allow User Variables=true";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                conn.Open();
+
+                MySqlCommand comm = new MySqlCommand();
+                comm.Connection = conn;
+                comm.CommandText = "select * from integrationsystems where screen_type = '" + matrixType + "'";
+                dataView.Rows.Clear();
+                dataView.Rows.Add();
+                MySqlDataReader rdr = comm.ExecuteReader();
+                int row = 0;
+
+                if (rdr.HasRows)
+                {
+                    while (rdr.Read())
+                    {
+                        for (int i = 0; i < rdr.FieldCount; i++)
+                        {
+                            for (int j = 0; j < dataView.Rows[row].Cells.Count; j++)
+                            {
+                                int cells = dataView.Rows[row].Cells.Count;
+                                Console.WriteLine("Index: " + j + " " + rdr[j]);
+                                dataView.Rows[row].Cells[j].Value = rdr[j + 1];                               
+                            }
+                        }
+                        row++;
+                        dataView.Rows.Add();
+                    }
+                }
+
+                conn.Close();
+            }
+            catch (MySqlException mysql)
+            {
+                Console.Error.WriteLine(mysql.Message);
+            }
+        }
+        public static int ScreenResolutionCount(string ScreenResolution)
+        {
+            string connStr = "server=localhost;user=root;database=integrationsystems;port=3306;password=;Allow User Variables=true";
+            int countItems = 0;
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                conn.Open();
+
+                MySqlCommand comm = new MySqlCommand();
+                comm.Connection = conn;
+                comm.CommandText = "select count(*) from integrationsystems where screen_resolution = '" + ScreenResolution + "'";
+                countItems = int.Parse(comm.ExecuteScalar().ToString());
+                conn.Close();
+            }
+            catch (MySqlException mysql)
+            {
+                Console.Error.WriteLine(mysql.Message);
+            }
+            return countItems;
+        }
+
     }
 }
