@@ -63,8 +63,7 @@ namespace IntegrationsSystem_labolatory2
                         }
                     }
                     tw.WriteLine();
-                }
-                
+                }             
             }
             
             MessageBox.Show("Pomyślnie wyeksportowano do pliku txt pod nazwą example.txt");
@@ -146,28 +145,66 @@ namespace IntegrationsSystem_labolatory2
 
         private void bExportToXML_Click(object sender, EventArgs e)
         {
-            int IdProduct = 0;
-            List<Product> products = new List<Product>();
+            //int IdProduct = 0;
+            //List<Product> products = new List<Product>();
+            //for (int i = 0; i < infoProductTable.Rows.Count - 1; i++)
+            //{
+            //    Product product = new Product();
+
+            //    Screen screenProduct = new Screen();
+
+            //    product.Id = IdProduct++;
+            //    product.Manufacturer = infoProductTable.Rows[i].Cells[0].Value.ToString();
+            //    screenProduct.Size = infoProductTable.Rows[i].Cells[1].Value.ToString();
+            //    screenProduct.Resolution = infoProductTable.Rows[i].Cells[2].Value.ToString();
+            //    screenProduct.Type = infoProductTable.Rows[i].Cells[3].Value.ToString();
+            //    screenProduct.ScreenTouch = infoProductTable.Rows[i].Cells[4].Value.ToString();
+
+            //    product.screen = screenProduct;
+            //    products.Add(product);
+
+            //    products.Add(product);
+            //}
+            //ReaderXML.CreatingXMLFile();   
+        }
+
+        private void bImportToDatabase_Click(object sender, EventArgs e)
+        {
             for (int i = 0; i < infoProductTable.Rows.Count - 1; i++)
             {
                 Product product = new Product();
+                product.Id = i;
+                product.Manufacture = infoProductTable.Rows[i].Cells[0].Value.ToString();
+                product.ScreenSize = infoProductTable.Rows[i].Cells[1].Value.ToString();
+                product.ScreenResolution = infoProductTable.Rows[i].Cells[2].Value.ToString();
+                product.ScreenType = infoProductTable.Rows[i].Cells[3].Value.ToString();
+                product.ScreenTouch = infoProductTable.Rows[i].Cells[4].Value.ToString();
+                product.ProcessorName = infoProductTable.Rows[i].Cells[5].Value.ToString();
+                product.CpuSpeed = infoProductTable.Rows[i].Cells[6].Value.ToString();
+                product.CpuThread = infoProductTable.Rows[i].Cells[7].Value.ToString();
+                product.RamSize = infoProductTable.Rows[i].Cells[8].Value.ToString();
+                product.SsdSize = infoProductTable.Rows[i].Cells[9].Value.ToString();
+                product.SsdType = infoProductTable.Rows[i].Cells[10].Value.ToString();
+                product.GpuName = infoProductTable.Rows[i].Cells[11].Value.ToString();
+                product.GpuRam = infoProductTable.Rows[i].Cells[12].Value.ToString();
+                product.OsName = infoProductTable.Rows[i].Cells[13].Value.ToString();
+                product.DiscReader = infoProductTable.Rows[i].Cells[14].Value.ToString();
 
-                Screen screenProduct = new Screen();
-
-                product.Id = IdProduct++;
-                product.Manufacturer = infoProductTable.Rows[i].Cells[0].Value.ToString();
-                screenProduct.Size = infoProductTable.Rows[i].Cells[1].Value.ToString();
-                screenProduct.Resolution = infoProductTable.Rows[i].Cells[2].Value.ToString();
-                screenProduct.Type = infoProductTable.Rows[i].Cells[3].Value.ToString();
-                screenProduct.ScreenTouch = infoProductTable.Rows[i].Cells[4].Value.ToString();
-
-                product.screen = screenProduct;
-                products.Add(product);
-
-                products.Add(product);
+                if (Helper.AddRecordToDatabse(product))
+                {
+                    MessageBox.Show("Record " + i.ToString() + " Added");
+                }
+                else
+                {
+                    MessageBox.Show("Nope");
+                }
             }
+            
+        }
 
-            CreatingXMLFile();
+        private void bExportToDatabase_Click(object sender, EventArgs e)
+        {
+            Helper.GetDataFromDatabase(infoProductTable);
         }
     }
 }

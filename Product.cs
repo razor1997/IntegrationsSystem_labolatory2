@@ -7,17 +7,24 @@ using System.Xml.Serialization;
 
 namespace IntegrationsSystem_labolatory2
 {
-    [Serializable]
     public class Product
     {
-        [XmlAttribute]
         public int Id { get; set; }
-        [XmlElement("Manufacturer")]
-        public string Manufacturer { get; set; }
-        [XmlElement("screen touch")]
-        public Screen screen { get; set; }
-        [XmlElement("processor")]
-        public Processor processor { get; set; }
+        public string Manufacture { get; set; }
+        public string ScreenSize { get; set; }
+        public string ScreenResolution { get; set; }
+        public string ScreenType { get; set; }
+        public string ScreenTouch { get; set; }
+        public string ProcessorName { get; set; }
+        public string CpuSpeed { get; set; }
+        public string CpuThread { get; set; }
+        public string RamSize { get; set; }
+        public string SsdSize { get; set; }
+        public string SsdType { get; set; }
+        public string GpuName { get; set; }
+        public string GpuRam { get; set; }
+        public string OsName { get; set; }
+        public string DiscReader { get; set; }
     }
 
     public class Screen

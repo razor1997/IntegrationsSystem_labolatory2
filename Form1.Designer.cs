@@ -49,6 +49,8 @@
             this.OpticalDrive = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bImportToXML = new System.Windows.Forms.Button();
             this.bExportToXML = new System.Windows.Forms.Button();
+            this.bImportToDatabase = new System.Windows.Forms.Button();
+            this.bExportToDatabase = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.infoProductTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -197,11 +199,33 @@
             this.bExportToXML.UseVisualStyleBackColor = true;
             this.bExportToXML.Click += new System.EventHandler(this.bExportToXML_Click);
             // 
+            // bImportToDatabase
+            // 
+            this.bImportToDatabase.Location = new System.Drawing.Point(611, 25);
+            this.bImportToDatabase.Name = "bImportToDatabase";
+            this.bImportToDatabase.Size = new System.Drawing.Size(113, 32);
+            this.bImportToDatabase.TabIndex = 6;
+            this.bImportToDatabase.Text = "Import to Database";
+            this.bImportToDatabase.UseVisualStyleBackColor = true;
+            this.bImportToDatabase.Click += new System.EventHandler(this.bImportToDatabase_Click);
+            // 
+            // bExportToDatabase
+            // 
+            this.bExportToDatabase.Location = new System.Drawing.Point(741, 25);
+            this.bExportToDatabase.Name = "bExportToDatabase";
+            this.bExportToDatabase.Size = new System.Drawing.Size(119, 32);
+            this.bExportToDatabase.TabIndex = 7;
+            this.bExportToDatabase.Text = "Export To Database";
+            this.bExportToDatabase.UseVisualStyleBackColor = true;
+            this.bExportToDatabase.Click += new System.EventHandler(this.bExportToDatabase_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1549, 494);
+            this.Controls.Add(this.bExportToDatabase);
+            this.Controls.Add(this.bImportToDatabase);
             this.Controls.Add(this.bExportToXML);
             this.Controls.Add(this.bImportToXML);
             this.Controls.Add(this.infoProductTable);
@@ -237,6 +261,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn OpticalDrive;
         private System.Windows.Forms.Button bImportToXML;
         private System.Windows.Forms.Button bExportToXML;
+        private System.Windows.Forms.Button bImportToDatabase;
+        private System.Windows.Forms.Button bExportToDatabase;
     }
 }
 

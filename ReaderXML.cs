@@ -13,11 +13,9 @@ namespace IntegrationsSystem_labolatory2
     {
         public static void CreatingXMLFile()
         {
-            XElement root = new XElement("Laptops","");
-            XDocument doc = new XDocument(root);
+            XmlDocument doc = new XmlDocument();
             Product product = new Product();
-            product.Manufacturer = "ss";
-            doc.Save(product.Manufacturer);
+
         }
 
 
